@@ -1,18 +1,20 @@
-<nav class="navbar">
-  <div class="nav-brand">
-    <span class="logo">S</span>
-    <span class="brand-name">Siaara Store</span>
-  </div>
-  <div class="nav-actions">
-    @if (auth.isLoggedIn()) {
-      <div class="user-greeting">
-        <span class="avatar">{{ auth.userProfile()?.name?.charAt(0) }}</span>
-        <span>My Account</span>
-      </div>
-      <button class="nav-btn ghost" (click)="onLogout()">Logout</button>
-    } @else {
-      <button class="nav-btn ghost" (click)="openLogin.emit()">Login</button>
-      <button class="nav-btn primary" (click)="openSignup.emit()">Sign Up</button>
-    }
+<nav class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="container max-w-7xl mx-auto flex h-14 items-center justify-between px-4">
+    <div class="flex items-center gap-2">
+      <span class="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold">S</span>
+      <span class="font-bold tracking-tight">Siaara Store</span>
+    </div>
+    <div class="flex items-center gap-4">
+      @if (auth.isLoggedIn()) {
+        <div class="flex items-center gap-2 text-sm font-medium">
+          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground">{{ auth.userProfile()?.name?.charAt(0) }}</span>
+          <span class="hidden sm:inline-block">My Account</span>
+        </div>
+        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" (click)="onLogout()">Logout</button>
+      } @else {
+        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" (click)="openLogin.emit()">Login</button>
+        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow transition-colors h-9 px-4 py-2" (click)="openSignup.emit()">Sign Up</button>
+      }
+    </div>
   </div>
 </nav>
