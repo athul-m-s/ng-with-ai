@@ -1,5 +1,6 @@
-import { Component, signal, inject } from '@angular/core';
+import { Component, signal, inject, ChangeDetectionStrategy } from '@angular/core';
 import { httpResource } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 import { AuthService } from '../../services/auth.service';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { LoginComponent } from '../../components/login/login.component';
@@ -11,6 +12,7 @@ import { Product } from '../../models/product/product.model';
   imports: [NavbarComponent, LoginComponent, SignupComponent],
   templateUrl: './home.html',
   styleUrl: './home.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
   auth = inject(AuthService);
@@ -24,7 +26,7 @@ export class HomeComponent {
 
   protected readonly productsResource = httpResource<Product[]>(() =>
     this.shouldFetch() && this.auth.isLoggedIn()
-      ? 'https://node-with-ai.azurewebsites.net/api/products'
+      ? `${environment.apiUrl}/products`
       : undefined,
   );
 
