@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="nav-brand">
+    <span class="logo">S</span>
+    <span class="brand-name">Siaara Store</span>
+  </div>
+  <div class="nav-actions">
+    @if (auth.isLoggedIn()) {
+      <div class="user-greeting">
+        <span class="avatar">{{ auth.userProfile()?.name?.charAt(0) }}</span>
+        <span>My Account</span>
+      </div>
+      <button class="nav-btn ghost" (click)="onLogout()">Logout</button>
+    } @else {
+      <button class="nav-btn ghost" (click)="openLogin.emit()">Login</button>
+      <button class="nav-btn primary" (click)="openSignup.emit()">Sign Up</button>
+    }
+  </div>
+</nav>
