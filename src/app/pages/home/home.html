@@ -1,0 +1,65 @@
+<app-navbar (openLogin)="openLogin()" (openSignup)="openSignup()"></app-navbar>
+
+<main class="main-container">
+  <header>
+    <h1>{{ title() }}</h1>
+    <p>Discover our amazing collection of premium products.</p>
+  </header>
+
+  <div class="products-section">
+    @if (!auth.isLoggedIn()) {
+      <div class="auth-prompt">
+        <div class="auth-card">
+          <h2>Members Only Collection</h2>
+          <p>Please log in or sign up to view and purchase our exclusive products.</p>
+          <div class="auth-prompt-actions">
+            <button class="load-btn primary-large" (click)="openLogin()">Login to View</button>
+          </div>
+        </div>
+      </div>
+    } @else {
+      <div class="products-grid">
+        @if (!shouldFetch()) {
+          <div class="idle-state">
+            <p>Ready to discover?</p>
+            <button class="load-btn" (click)="loadProducts()">Fetch Products</button>
+          </div>
+        } @else if (productsResource.isLoading()) {
+          <div class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading premium products...</p>
+          </div>
+        } @else if (productsResource.error()) {
+          <div class="error-state">
+            <p>Error: {{ productsResource.error()?.message || 'Failed to load products' }}</p>
+            <button class="retry-btn" (click)="productsResource.reload()">Retry</button>
+          </div>
+        } @else if (productsResource.hasValue()) {
+          @for (product of productsResource.value(); track product._id) {
+            <div class="product-card">
+              <div class="product-content">
+                <span class="category-badge">{{ product.category }}</span>
+                <h2>{{ product.name }}</h2>
+                <p class="description">{{ product.description }}</p>
+                <div class="price-tag">${{ product.price }}</div>
+              </div>
+              <div class="product-actions">
+                <button class="buy-btn">Add to Cart</button>
+              </div>
+            </div>
+          }
+        }
+      </div>
+    }
+  </div>
+</main>
+
+<!-- Login Modal -->
+@if (showLoginModal()) {
+  <app-login (close)="closeLogin()" (openSignup)="openSignup()"></app-login>
+}
+
+<!-- Signup Modal -->
+@if (showSignupModal()) {
+  <app-signup (close)="closeSignup()" (openLogin)="openLogin()"></app-signup>
+}
