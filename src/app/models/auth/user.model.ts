@@ -1,6 +1,8 @@
 export interface UserProfile {
+  id?: string;
   name: string;
   email: string;
+  age?: number;
 }
 
 export interface LoginCredentials {
