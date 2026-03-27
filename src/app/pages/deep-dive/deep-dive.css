@@ -1,0 +1,136 @@
+/* ============================================================
+   DEEP DIVE PAGE
+   ============================================================ */
+
+.dive-page {
+  min-height: 100svh;
+  background: #000;
+  padding-top: 80px; /* below fixed navbar */
+  padding-bottom: 4rem;
+  animation: pageEnter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+/* ── Page Header ── */
+.dive-header {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 2rem;
+}
+
+.dive-heading {
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  color: #fff;
+  margin: 0 0 0.85rem;
+}
+
+.dive-heading-dim {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.dive-sub {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+  max-width: 480px;
+  line-height: 1.6;
+}
+
+/* ── Bento Grid ── */
+.bento-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1024px) {
+  .bento-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .bento-grid { grid-template-columns: 1fr; }
+  .dive-header { padding-top: 2rem; }
+}
+
+/* ── Shared Bento Card ── */
+:host ::ng-deep .bento-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 18px;
+  padding: 1.4rem;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.22s ease;
+
+  /* Staggered entrance */
+  animation: bentoReveal 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+:host ::ng-deep .bento-card:nth-child(1) { animation-delay: 0.05s; }
+:host ::ng-deep .bento-card:nth-child(2) { animation-delay: 0.12s; }
+:host ::ng-deep .bento-card:nth-child(3) { animation-delay: 0.19s; }
+:host ::ng-deep .bento-card:nth-child(4) { animation-delay: 0.26s; }
+:host ::ng-deep .bento-card:nth-child(5) { animation-delay: 0.33s; }
+:host ::ng-deep .bento-card:nth-child(6) { animation-delay: 0.40s; }
+:host ::ng-deep .bento-card:nth-child(7) { animation-delay: 0.47s; }
+
+:host ::ng-deep .bento-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255,255,255,0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+:host ::ng-deep .bento-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Bento Tag (category pill) ── */
+:host ::ng-deep .bento-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-bottom: 0.85rem;
+}
+
+/* ── Grid column overrides ── */
+
+/* Employment history — always full width */
+:host ::ng-deep .bento-card--full {
+  grid-column: 1 / -1;
+}
+
+/* About — 2 of 3 cols */
+:host ::ng-deep .bento-card--about {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  :host ::ng-deep .bento-card--about {
+    grid-column: span 1;
+  }
+}
+
+/* Extra animation delay for 8th card (education) */
+:host ::ng-deep .bento-card:nth-child(8) { animation-delay: 0.54s; }
+

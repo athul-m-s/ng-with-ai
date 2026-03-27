@@ -1,0 +1,44 @@
+<app-navbar (openLogin)="openLogin()" (openSignup)="openSignup()"></app-navbar>
+
+<main class="dive-page" aria-label="Deep Dive — About Me">
+
+  <!-- Page Header -->
+  <header class="dive-header">
+    <h1 class="dive-heading">Everything<br><span class="dive-heading-dim">about me</span></h1>
+    <p class="dive-sub">A structured look at who I am, what I build, and what I love.</p>
+  </header>
+
+  <!-- Bento Grid -->
+  <div class="bento-grid">
+
+    <!-- Row 1: About (2-col) + Skills (1-col) -->
+    <app-about-section></app-about-section>
+    <app-learning-materials></app-learning-materials>
+
+    <!-- Row 2: Employment History — full width (3-col) -->
+    <app-professional-info></app-professional-info>
+
+    <!-- Row 3: Projects (2-col) + Lifestyle (1-col) -->
+    <app-projects></app-projects>
+    <app-entertainment></app-entertainment>
+
+    <!-- Row 4: Personal (1-col) + Education (1-col) — Education spans remaining 2 of 3 cols -->
+    <app-personal-info></app-personal-info>
+    <app-education></app-education>
+
+    <!-- Row 5: Connect — full width, single horizontal row of links -->
+    <app-social-links></app-social-links>
+
+  </div>
+
+</main>
+
+<!-- Login Modal -->
+@if (showLoginModal()) {
+  <app-login (close)="closeLogin()" (openSignup)="openSignup()"></app-login>
+}
+
+<!-- Signup Modal -->
+@if (showSignupModal()) {
+  <app-signup (close)="closeSignup()" (openLogin)="openLogin()"></app-signup>
+}

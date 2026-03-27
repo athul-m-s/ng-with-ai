@@ -1,11 +1,14 @@
-import { Component, signal, inject, ChangeDetectionStrategy } from '@angular/core';
-import { httpResource } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
+import {
+  Component,
+  signal,
+  inject,
+  ChangeDetectionStrategy,
+} from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { LoginComponent } from '../../components/login/login.component';
 import { SignupComponent } from '../../components/signup/signup.component';
-import { Product } from '../../models/product/product.model';
 
 @Component({
   selector: 'app-home',
@@ -15,27 +18,22 @@ import { Product } from '../../models/product/product.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomeComponent {
+  private router = inject(Router);
   auth = inject(AuthService);
-
-  protected readonly title = signal('Siaara Store');
-  protected readonly shouldFetch = signal(false);
 
   // UI State for Modals
   protected readonly showLoginModal = signal(false);
   protected readonly showSignupModal = signal(false);
 
-  protected readonly productsResource = httpResource<Product[]>(() =>
-    this.shouldFetch() && this.auth.isLoggedIn()
-      ? `${environment.apiUrl}/products`
-      : undefined,
-  );
+  // Page transition state
+  protected readonly isLeaving = signal(false);
 
-  loadProducts() {
-    if (this.auth.isLoggedIn()) {
-      this.shouldFetch.set(true);
-    } else {
-      this.openLogin();
-    }
+  /** Triggers the fade+slide-up exit animation then lazy-navigates */
+  goToDeepDive() {
+    this.isLeaving.set(true);
+    setTimeout(() => {
+      this.router.navigate(['/deep-dive']);
+    }, 620);
   }
 
   // Modal controls
@@ -47,9 +45,6 @@ export class HomeComponent {
 
   closeLogin() {
     this.showLoginModal.set(false);
-    if (this.shouldFetch() && this.auth.isLoggedIn()) {
-      this.productsResource.reload();
-    }
   }
 
   openSignup() {
@@ -60,8 +55,5 @@ export class HomeComponent {
 
   closeSignup() {
     this.showSignupModal.set(false);
-    if (this.shouldFetch() && this.auth.isLoggedIn()) {
-      this.productsResource.reload();
-    }
   }
 }

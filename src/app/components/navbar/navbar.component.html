@@ -1,19 +1,24 @@
-<nav class="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-  <div class="container max-w-7xl mx-auto flex h-14 items-center justify-between px-4">
-    <div class="flex items-center gap-2">
-      <span class="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground font-bold">S</span>
-      <span class="font-bold tracking-tight">Siaara Store</span>
+<nav class="mono-nav">
+  <div class="mono-nav__inner">
+    <!-- Brand -->
+    <div class="mono-nav__brand">
+      <span class="mono-nav__logo" aria-hidden="true">A</span>
+      <span class="mono-nav__name">Athul MS</span>
     </div>
-    <div class="flex items-center gap-4">
+
+    <!-- Auth Actions -->
+    <div class="mono-nav__actions">
       @if (auth.isLoggedIn()) {
-        <div class="flex items-center gap-2 text-sm font-medium">
-          <span class="flex h-8 w-8 items-center justify-center rounded-full bg-muted text-muted-foreground">{{ auth.userProfile()?.name?.charAt(0) }}</span>
-          <span class="hidden sm:inline-block">My Account</span>
+        <div class="mono-nav__user">
+          <span class="mono-nav__avatar" aria-hidden="true">
+            {{ auth.userProfile()?.name?.charAt(0) }}
+          </span>
+          <span class="mono-nav__user-name">{{ auth.userProfile()?.name }}</span>
         </div>
-        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" (click)="onLogout()">Logout</button>
+        <button class="mono-btn mono-btn--ghost" (click)="onLogout()">Logout</button>
       } @else {
-        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground h-9 px-4 py-2" (click)="openLogin.emit()">Login</button>
-        <button class="inline-flex items-center justify-center rounded-md text-sm font-medium bg-primary text-primary-foreground hover:bg-primary/90 shadow transition-colors h-9 px-4 py-2" (click)="openSignup.emit()">Sign Up</button>
+        <button class="mono-btn mono-btn--ghost" (click)="openLogin.emit()">Login</button>
+        <button class="mono-btn mono-btn--outline" (click)="openSignup.emit()">Sign Up</button>
       }
     </div>
   </div>
