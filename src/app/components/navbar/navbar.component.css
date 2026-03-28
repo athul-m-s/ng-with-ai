@@ -36,7 +36,7 @@
 .mono-nav__logo {
   width: 32px;
   height: 32px;
-  border-radius: 8px;
+  border-radius: 50%;
   background: #fff;
   color: #000;
   display: flex;

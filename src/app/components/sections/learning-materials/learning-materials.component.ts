@@ -2,57 +2,116 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-learning-materials',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="bento-card" aria-label="Technical Skills">
       <div class="bento-tag">Skills</div>
       <h2 class="section-title">Tech Stack</h2>
-      <div class="chip-cloud">
-        @for (skill of skills; track skill) {
-          <span class="skill-chip">{{ skill }}</span>
+
+      <div class="skills-container">
+        @for (category of categories; track category.label) {
+          <div class="skill-category">
+            <h3 class="category-label">{{ category.label }}</h3>
+            <div class="chip-cloud">
+              @for (name of category.skills; track name) {
+                <span class="skill-chip">{{ name }}</span>
+              }
+            </div>
+          </div>
         }
       </div>
     </section>
   `,
-  styles: [`
-    :host { display: block; }
-    .bento-card { width: 100%; height: 100%; }
-    .chip-cloud {
-      display: flex;
-
-      flex-wrap: wrap;
-      gap: 0.4rem;
-      align-content: flex-start;
-    }
-    .skill-chip {
-      display: inline-flex;
-      align-items: center;
-      padding: 0.28rem 0.7rem;
-      border-radius: 99px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
-      font-size: 0.76rem;
-      font-weight: 500;
-      color: rgba(255,255,255,0.65);
-      transition: background 0.14s ease, border-color 0.14s ease, color 0.14s ease, transform 0.12s cubic-bezier(0.34,1.56,0.64,1);
-      cursor: default;
-      white-space: nowrap;
-    }
-    .skill-chip:hover {
-      background: rgba(255,255,255,0.09);
-      border-color: rgba(255,255,255,0.22);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-  `],
+  styles: [
+    `
+      :host {
+        display: block;
+        height: 100%;
+      }
+      .bento-card {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .skills-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        margin-top: 0.5rem;
+      }
+      .skill-category {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+      .category-label {
+        font-size: 0.68rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.25);
+        margin: 0;
+      }
+      .chip-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .skill-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.3rem 0.75rem;
+        border-radius: 99px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.03);
+        font-size: 0.76rem;
+        font-weight: 500;
+        color: rgba(255, 255, 255, 0.65);
+        transition: all 0.16s ease;
+        cursor: default;
+        white-space: nowrap;
+      }
+      .skill-chip:hover {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.22);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+    `,
+  ],
 })
 export class LearningMaterialsComponent {
-  skills = [
-    'Angular 18+', 'React', 'TypeScript', 'JavaScript',
-    'HTML', 'CSS', 'Tailwind', 'Shadcn/ui',
-    'Angular Material', 'Bootstrap', 'WIJMO',
-    'Node.js', '.NET Core', 'MongoDB', 'Cosmos DB',
-    'Azure', 'Azure AI Foundry', 'Form Recognizer',
-    'Function Apps', 'LangChain', 'OpenAI',
+  readonly categories = [
+    {
+      label: 'Frontend',
+      skills: [
+        'Angular 18+',
+        'React',
+        'TypeScript',
+        'JavaScript',
+        'HTML',
+        'CSS',
+        'Tailwind',
+        'Shadcn/ui',
+        'WIJMO',
+        'Bootstrap',
+      ],
+    },
+    {
+      label: 'Backend',
+      skills: ['Node.js', '.NET Core', 'C#', 'MongoDB', 'Cosmos DB'],
+    },
+    {
+      label: 'Cloud',
+      skills: ['Azure', 'Function Apps', 'Azure Storage'],
+    },
+    {
+      label: 'AI & Tools',
+      skills: ['LangChain', 'OpenAI', 'Azure AI Foundry', 'Form Recognizer'],
+    },
   ];
 }

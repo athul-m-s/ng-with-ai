@@ -17,6 +17,7 @@ interface Job {
 
 @Component({
   selector: 'app-professional-info',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="bento-card bento-card--full" aria-label="Employment History">

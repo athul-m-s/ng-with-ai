@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-entertainment',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="bento-card bento-card--entertainment" aria-label="Entertainment and Lifestyle">
@@ -44,24 +45,38 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <div class="ent-divider" role="separator"></div>
 
       <!-- Football -->
-      <div class="ent-block ent-static" aria-label="Football fan">
+      <a
+        href="https://www.manutd.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ent-block"
+        aria-label="Manchester United Football Team"
+      >
         <div class="ent-icon" aria-hidden="true">⚽</div>
         <div class="ent-info">
           <span class="ent-label">Football</span>
-          <span class="ent-sub">Passionate fan & player</span>
+          <span class="ent-sub">Manchester United FC</span>
         </div>
-      </div>
+        <span class="ent-arrow" aria-hidden="true">↗</span>
+      </a>
 
       <div class="ent-divider" role="separator"></div>
 
       <!-- Gaming -->
-      <div class="ent-block ent-static" aria-label="Video gaming">
+      <a
+        href="https://www.ign.com/playlist/athulms/library"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="ent-block"
+        aria-label="Video gaming library on IGN"
+      >
         <div class="ent-icon" aria-hidden="true">🎮</div>
         <div class="ent-info">
           <span class="ent-label">Video Gaming</span>
-          <span class="ent-sub">Strategy & open-world</span>
+          <span class="ent-sub">IGN Library</span>
         </div>
-      </div>
+        <span class="ent-arrow" aria-hidden="true">↗</span>
+      </a>
     </section>
   `,
   styles: [

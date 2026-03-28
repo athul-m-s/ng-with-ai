@@ -10,6 +10,7 @@ interface Degree {
 
 @Component({
   selector: 'app-education',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="bento-card" aria-label="Education">
@@ -38,7 +39,7 @@ interface Degree {
   styles: [`
     :host { 
       display: block; 
-      grid-column: span 2; 
+      grid-column: span 1; 
     }
     .bento-card { width: 100%; height: 100%; }
     @media (max-width: 1024px) { :host { grid-column: span 1; } }
@@ -98,6 +99,13 @@ export class EducationComponent {
       location: 'Coimbatore',
       period: '2014 – 2017',
       pct: '85%',
+    },
+    {
+      degree: 'Computer Science',
+      institution: 'Mission higher secondary school',
+      location: 'Palakkad',
+      period: '2012 – 2014',
+      pct: '80%',
     },
   ];
 }

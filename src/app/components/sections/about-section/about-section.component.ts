@@ -2,6 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-about-section',
+  standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section class="bento-card bento-card--about" aria-label="About">
@@ -16,15 +17,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         Committed to continuous learning, adept at leading teams, and passionate about
         developing innovative solutions — from Angular migrations to AI-powered document workflows.
       </p>
-      <div class="cert-row">
-        @for (cert of certifications; track cert.title) {
-          <div class="cert-chip">
-            <span class="cert-icon" aria-hidden="true">🏅</span>
-            <span class="cert-label">{{ cert.title }}</span>
-            <span class="cert-date">{{ cert.date }}</span>
-          </div>
-        }
-      </div>
     </section>
   `,
   styles: [`
@@ -40,31 +32,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       :host { grid-column: span 1; }
     }
     
-    .cert-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-    .cert-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.3rem 0.75rem;
-      border-radius: 99px;
-      border: 1px solid rgba(255,255,255,0.1);
-      background: rgba(255,255,255,0.03);
-    }
-    .cert-icon { font-size: 0.8rem; }
-    .cert-label { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.65); }
-    .cert-date { font-size: 0.68rem; color: rgba(255,255,255,0.3); }
-
-
   `],
 })
 export class AboutSectionComponent {
-  certifications = [
-    { title: 'Azure Fundamentals AZ-900', date: 'Nov 2022' },
-    { title: 'Azure Data Fundamentals DP-900', date: 'Dec 2022' },
-  ];
 }
