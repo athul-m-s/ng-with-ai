@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 interface Project {
   name: string;
@@ -18,12 +19,10 @@ interface Job {
 @Component({
   selector: 'app-professional-info',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card bento-card--full" aria-label="Employment History">
-      <div class="bento-tag">Experience</div>
-      <h2 class="section-title">Employment History</h2>
-
+    <app-bento-card tag="Experience" title="Employment History" ariaLabel="Employment History">
       <div class="jobs-grid">
         @for (job of jobs; track job.company + job.period) {
           <div class="job-block">
@@ -66,24 +65,34 @@ interface Job {
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
     :host { 
       display: block; 
       grid-column: 1 / -1; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .bento-card--full { width: 100%; height: 100%; }
+    @media (max-width: 1024px) {
+      :host { grid-column: 1 / -1; }
+    }
 
-    /* 3-column job grid on desktop */
+    /* Responsive job grid */
     .jobs-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
+      width: 100%;
     }
 
-    @media (max-width: 1024px) {
-      .jobs-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    @media (max-width: 1200px) {
+      .jobs-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .jobs-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
 
     /* Job Block */

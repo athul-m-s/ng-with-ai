@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 interface SocialLink {
   label: string;
@@ -9,10 +10,11 @@ interface SocialLink {
 
 @Component({
   selector: 'app-social-links',
+  standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card bento-card--social" aria-label="Social Media and Contact">
-      <div class="bento-tag">Connect</div>
+    <app-bento-card tag="Connect" ariaLabel="Social Media and Contact">
       <div class="social-grid">
         @for (link of links; track link.label) {
           <a
@@ -28,20 +30,40 @@ interface SocialLink {
           </a>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
     :host { 
       display: block; 
       grid-column: 1 / -1; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .bento-card--social { width: 100%; height: 100%; }
 
     .social-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 0.75rem;
+      width: 100%;
     }
+
+    @media (max-width: 1200px) {
+      .social-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .social-grid { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+    }
+
+    @media (max-width: 480px) {
+      .social-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      :host { grid-column: 1 / -1; }
+    }
+
     .social-item {
       display: flex;
       flex-direction: column;
@@ -68,10 +90,6 @@ interface SocialLink {
     .social-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
     .social-handle { font-size: 0.68rem; color: rgba(255,255,255,0.28); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
 
-    @media (max-width: 1024px) {
-      :host { grid-column: span 1; }
-      .social-grid { grid-template-columns: 1fr; gap: 0.85rem; }
-    }
 
   `],
 })

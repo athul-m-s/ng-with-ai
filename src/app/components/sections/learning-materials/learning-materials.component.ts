@@ -1,14 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 @Component({
   selector: 'app-learning-materials',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card" aria-label="Technical Skills">
-      <div class="bento-tag">Skills</div>
-      <h2 class="section-title">Tech Stack</h2>
-
+    <app-bento-card tag="Skills" title="Tech Stack" ariaLabel="Technical Skills">
       <div class="skills-container">
         @for (category of categories; track category.label) {
           <div class="skill-category">
@@ -21,26 +20,25 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [
     `
       :host {
         display: block;
         height: 100%;
-      }
-      .bento-card {
         width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        box-sizing: border-box;
+      }
+      @media (max-width: 1024px) {
+        :host { grid-column: 1 / -1; }
       }
       .skills-container {
         display: flex;
         flex-direction: column;
         gap: 1.25rem;
         margin-top: 0.5rem;
+        width: 100%;
       }
       .skill-category {
         display: flex;

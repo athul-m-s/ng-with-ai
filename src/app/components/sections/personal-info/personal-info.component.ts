@@ -1,12 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 @Component({
   selector: 'app-personal-info',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card" aria-label="Personal Information">
-      <div class="bento-tag">Personal</div>
+    <app-bento-card tag="Personal" ariaLabel="Personal Information">
       <div class="personal-grid">
         @for (item of items; track item.label) {
           <div class="personal-item">
@@ -23,34 +24,62 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
-    :host { display: block; }
-    .bento-card { width: 100%; height: 100%; }
+    :host { 
+      display: block; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (max-width: 1024px) {
+      :host { grid-column: 1 / -1; }
+    }
     .personal-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.9rem 0.5rem;
+      gap: 1.5rem 1rem;
+      width: 100%;
     }
-    .personal-item { display: flex; flex-direction: column; gap: 0.15rem; }
-    .personal-icon { font-size: 1rem; margin-bottom: 0.1rem; }
-    .personal-label { font-size: 0.68rem; color: rgba(255,255,255,0.28); letter-spacing: 0.06em; text-transform: uppercase; }
-    .personal-value { font-size: 0.85rem; font-weight: 500; color: rgba(255,255,255,0.78); }
+    @media (max-width: 480px) {
+      .personal-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+    }
+    .personal-item { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.25rem; 
+      min-width: 0;
+    }
+    .personal-icon { font-size: 1.15rem; margin-bottom: 0.15rem; opacity: 0.8; }
+    .personal-label { 
+      font-size: 0.65rem; 
+      color: rgba(255,255,255,0.3); 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .personal-value { 
+      font-size: 0.92rem; 
+      font-weight: 600; 
+      color: rgba(255,255,255,0.9);
+      line-height: 1.4;
+      word-break: break-word;
+    }
     .personal-link {
       color: #fff;
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      transition: color 0.2s ease;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
     }
     .personal-link:hover {
       color: rgba(255,255,255,0.6);
-      text-decoration: underline;
+      transform: translateX(4px);
     }
     .link-icon {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       opacity: 0.5;
     }
   `],

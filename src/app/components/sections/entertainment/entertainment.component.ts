@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 @Component({
   selector: 'app-entertainment',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card bento-card--entertainment" aria-label="Entertainment and Lifestyle">
-      <div class="bento-tag">Lifestyle</div>
-
+    <app-bento-card tag="Lifestyle" ariaLabel="Entertainment and Lifestyle">
       <!-- Films / Letterboxd -->
       <a
         href="https://letterboxd.com/AthulMS/"
@@ -77,16 +77,18 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         </div>
         <span class="ent-arrow" aria-hidden="true">↗</span>
       </a>
-    </section>
+    </app-bento-card>
   `,
   styles: [
     `
       :host {
         display: block;
-      }
-      .bento-card--entertainment {
-        width: 100%;
         height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      @media (max-width: 1024px) {
+        :host { grid-column: 1 / -1; }
       }
       .ent-block {
         display: flex;
@@ -95,6 +97,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
         padding: 0.55rem 0;
         text-decoration: none;
         border-radius: 10px;
+        width: 100%;
         transition:
           transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
           opacity 0.15s;

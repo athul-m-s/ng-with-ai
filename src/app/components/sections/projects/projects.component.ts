@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 interface Project {
   name: string;
@@ -11,11 +12,11 @@ interface Project {
 
 @Component({
   selector: 'app-projects',
+  standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card" aria-label="Work Projects">
-      <div class="bento-tag">Projects</div>
-      <h2 class="section-title">Featured Work</h2>
+    <app-bento-card tag="Projects" title="Featured Work" ariaLabel="Work Projects">
       <div class="project-list">
         @for (p of projects; track p.name) {
           <div class="project-card" tabindex="0" [attr.aria-label]="p.name">
@@ -40,19 +41,26 @@ interface Project {
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
     :host { 
       display: block; 
       grid-column: span 2; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .bento-card { width: 100%; height: 100%; }
     @media (max-width: 1024px) {
-      :host { grid-column: span 1; }
+      :host { grid-column: 1 / -1; }
     }
     
-    .project-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .project-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.75rem; 
+      width: 100%;
+    }
 
     .project-card {
       padding: 0.9rem;

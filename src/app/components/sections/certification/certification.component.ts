@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 @Component({
   selector: 'app-certification',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card" aria-label="Certifications">
-      <div class="bento-tag">Certificates</div>
-      <h2 class="section-title">Certifications</h2>
+    <app-bento-card tag="Certificates" title="Certifications" ariaLabel="Certifications">
       <div class="cert-list">
         @for (cert of certifications; track cert.title) {
           <div class="cert-item">
@@ -19,12 +19,24 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
-    :host { display: block; }
-    .bento-card { width: 100%; height: 100%; }
-    .cert-list { display: flex; flex-direction: column; gap: 0.8rem; }
+    :host { 
+      display: block; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    @media (max-width: 1024px) {
+      :host { grid-column: 1 / -1; }
+    }
+    .cert-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.8rem; 
+      width: 100%;
+    }
     .cert-item {
       display: flex;
       align-items: center;

@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BentoCardComponent } from '../../shared/bento-card/bento-card';
 
 interface Degree {
   degree: string;
@@ -11,11 +12,10 @@ interface Degree {
 @Component({
   selector: 'app-education',
   standalone: true,
+  imports: [BentoCardComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <section class="bento-card" aria-label="Education">
-      <div class="bento-tag">Education</div>
-      <h2 class="section-title">Academic Background</h2>
+    <app-bento-card tag="Education" title="Academic Background" ariaLabel="Education">
       <div class="edu-list">
         @for (edu of education; track edu.degree) {
           <div class="edu-card">
@@ -34,17 +34,24 @@ interface Degree {
           </div>
         }
       </div>
-    </section>
+    </app-bento-card>
   `,
   styles: [`
     :host { 
       display: block; 
       grid-column: span 1; 
+      height: 100%;
+      width: 100%;
+      box-sizing: border-box;
     }
-    .bento-card { width: 100%; height: 100%; }
-    @media (max-width: 1024px) { :host { grid-column: span 1; } }
+    @media (max-width: 1024px) { :host { grid-column: 1 / -1; } }
     
-    .edu-list { display: flex; flex-direction: column; gap: 0.6rem; }
+    .edu-list { 
+      display: flex; 
+      flex-direction: column; 
+      gap: 0.6rem; 
+      width: 100%;
+    }
 
     .edu-card {
       padding: 0.85rem;
