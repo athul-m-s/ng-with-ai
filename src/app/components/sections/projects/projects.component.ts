@@ -19,7 +19,7 @@ interface Project {
     <app-bento-card tag="Projects" title="Featured Work" ariaLabel="Work Projects">
       <div class="project-list">
         @for (p of projects; track p.name) {
-          <div class="project-card" tabindex="0" [attr.aria-label]="p.name">
+          <div class="glass-item" tabindex="0" [attr.aria-label]="p.name">
             <div class="project-top">
               <div class="project-meta">
                 <span class="project-name">{{ p.name }}</span>
@@ -35,7 +35,7 @@ interface Project {
             </ul>
             <div class="project-tags">
               @for (tag of p.tags; track tag) {
-                <span class="project-tag">{{ tag }}</span>
+                <span class="glass-tag">{{ tag }}</span>
               }
             </div>
           </div>
@@ -62,20 +62,11 @@ interface Project {
       width: 100%;
     }
 
-    .project-card {
-      padding: 0.9rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.02);
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.16s cubic-bezier(0.34,1.56,0.64,1);
+    .glass-item {
       cursor: default;
+      padding: 1.1rem;
     }
-    .project-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.14);
-      transform: translateY(-2px);
-    }
-    .project-card:active { transform: scale(0.98); transition-duration: 0.07s; }
+
     .project-top {
       display: flex;
       align-items: flex-start;
@@ -118,14 +109,6 @@ interface Project {
       display: flex;
       flex-wrap: wrap;
       gap: 0.3rem;
-    }
-    .project-tag {
-      font-size: 0.68rem;
-      color: rgba(255,255,255,0.4);
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 0.12rem 0.5rem;
-      border-radius: 99px;
-      letter-spacing: 0.03em;
     }
   `],
 })

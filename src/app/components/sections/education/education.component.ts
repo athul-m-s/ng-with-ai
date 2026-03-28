@@ -18,7 +18,7 @@ interface Degree {
     <app-bento-card tag="Education" title="Academic Background" ariaLabel="Education">
       <div class="edu-list">
         @for (edu of education; track edu.degree) {
-          <div class="edu-card">
+          <div class="glass-item">
             <div class="edu-top">
               <span class="edu-icon" aria-hidden="true">🎓</span>
               <div class="edu-info">
@@ -53,20 +53,13 @@ interface Degree {
       width: 100%;
     }
 
-    .edu-card {
-      padding: 0.85rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.02);
+    .glass-item {
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
-      transition: background 0.18s ease, border-color 0.18s ease;
+      gap: 0.65rem;
+      padding: 0.9rem;
     }
-    .edu-card:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.14);
-    }
+
     .edu-top { display: flex; align-items: flex-start; gap: 0.75rem; }
     .edu-icon {
       font-size: 1.1rem;

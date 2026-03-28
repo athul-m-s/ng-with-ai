@@ -10,7 +10,7 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
     <app-bento-card tag="Certificates" title="Certifications" ariaLabel="Certifications">
       <div class="cert-list">
         @for (cert of certifications; track cert.title) {
-          <div class="cert-item">
+          <div class="glass-item">
             <div class="cert-icon" aria-hidden="true">🏅</div>
             <div class="cert-info">
               <span class="cert-title">{{ cert.title }}</span>
@@ -37,19 +37,11 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
       gap: 0.8rem; 
       width: 100%;
     }
-    .cert-item {
+    .glass-item {
       display: flex;
       align-items: center;
       gap: 0.9rem;
       padding: 0.75rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.07);
-      background: rgba(255,255,255,0.02);
-      transition: background 0.18s ease, border-color 0.18s ease;
-    }
-    .cert-item:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.14);
     }
     .cert-icon {
       font-size: 1.1rem;

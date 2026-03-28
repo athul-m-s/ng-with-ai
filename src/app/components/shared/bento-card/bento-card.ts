@@ -23,14 +23,14 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
       height: 100%;
       width: 100%;
       padding: 1.5rem;
-      border-radius: 0.75rem; /* Matches var(--radius) */
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius);
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
       position: relative;
       overflow: hidden;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: var(--glass-transition);
       box-sizing: border-box;
     }
 
@@ -49,8 +49,8 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
     }
 
     :host:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.14);
+      background: var(--glass-bg-hover);
+      border-color: var(--glass-border-hover);
       transform: translateY(-2px);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
     }
@@ -60,14 +60,14 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
       align-items: center;
       padding: 0.25rem 0.75rem;
       border-radius: 99px;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--glass-tag-border);
+      background: var(--glass-tag-bg);
       font-size: 0.7rem;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.35);
+      color: var(--glass-tag-color);
       margin-bottom: 1rem;
-      background: rgba(255, 255, 255, 0.03);
     }
 
     .section-title {
@@ -76,7 +76,7 @@ import { Component, input, ChangeDetectionStrategy } from '@angular/core';
       font-weight: 800;
       letter-spacing: -0.035em;
       color: #fff;
-      margin: 0 0 1rem;
+      margin: 0 0 1.25rem;
       line-height: 1.2;
     }
   `]

@@ -25,7 +25,7 @@ interface Job {
     <app-bento-card tag="Experience" title="Employment History" ariaLabel="Employment History">
       <div class="jobs-grid">
         @for (job of jobs; track job.company + job.period) {
-          <div class="job-block">
+          <div class="glass-item">
             <!-- Job Header -->
             <div class="job-header">
               <div class="job-dot-col">
@@ -55,7 +55,7 @@ interface Job {
                     </div>
                     <div class="proj-tags">
                       @for (tag of proj.tags; track tag) {
-                        <span class="proj-tag">{{ tag }}</span>
+                        <span class="glass-tag">{{ tag }}</span>
                       }
                     </div>
                   </div>
@@ -95,9 +95,8 @@ interface Job {
       .jobs-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
 
-    /* Job Block */
-
-    .job-block {
+    /* Job Content Layout */
+    .glass-item {
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 14px;
@@ -106,8 +105,9 @@ interface Job {
       flex-direction: column;
       gap: 0.85rem;
       transition: background 0.18s ease, border-color 0.18s ease;
+      box-sizing: border-box;
     }
-    .job-block:hover {
+    .glass-item:hover {
       background: rgba(255,255,255,0.04);
       border-color: rgba(255,255,255,0.12);
     }
@@ -146,13 +146,14 @@ interface Job {
       gap: 0.6rem;
       border-top: 1px solid rgba(255,255,255,0.06);
       padding-top: 0.65rem;
+      margin-top: 0.85rem;
     }
     .proj-item { display: flex; flex-direction: column; gap: 0.35rem; }
     .proj-header { display: flex; align-items: baseline; justify-content: space-between; gap: 0.5rem; }
     .proj-name { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.7); }
     .proj-period { font-size: 0.65rem; color: rgba(255,255,255,0.25); white-space: nowrap; flex-shrink: 0; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
-    .proj-tag {
+    .glass-tag {
       font-size: 0.65rem; color: rgba(255,255,255,0.35);
       border: 1px solid rgba(255,255,255,0.09);
       padding: 0.1rem 0.45rem; border-radius: 99px;

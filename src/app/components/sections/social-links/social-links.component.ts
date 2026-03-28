@@ -21,7 +21,7 @@ interface SocialLink {
             [href]="link.href"
             [target]="link.href.startsWith('mailto') || link.href.startsWith('tel') ? '_self' : '_blank'"
             rel="noopener noreferrer"
-            class="social-item"
+            class="glass-item"
             [attr.aria-label]="link.label + ': ' + link.handle"
           >
             <span class="social-icon" aria-hidden="true">{{ link.icon }}</span>
@@ -64,33 +64,18 @@ interface SocialLink {
       :host { grid-column: 1 / -1; }
     }
 
-    .social-item {
+    .glass-item {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 0.3rem;
       padding: 0.9rem 1rem;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
       text-decoration: none;
       min-width: 0;
-      transition:
-        background 0.18s ease,
-        border-color 0.18s ease,
-        transform 0.16s cubic-bezier(0.34,1.56,0.64,1);
     }
-    .social-item:hover {
-      background: rgba(255,255,255,0.06);
-      border-color: rgba(255,255,255,0.18);
-      transform: translateY(-3px);
-    }
-    .social-item:active { transform: scale(0.94); transition-duration: 0.07s; }
     .social-icon { font-size: 1.25rem; }
     .social-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
     .social-handle { font-size: 0.68rem; color: rgba(255,255,255,0.28); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
-
-
   `],
 })
 export class SocialLinksComponent {

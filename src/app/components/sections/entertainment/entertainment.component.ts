@@ -24,7 +24,7 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
         <span class="ent-arrow" aria-hidden="true">↗</span>
       </a>
 
-      <div class="ent-divider" role="separator"></div>
+      <div class="glass-divider" role="separator"></div>
 
       <!-- Music / Spotify -->
       <a
@@ -42,7 +42,7 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
         <span class="ent-arrow" aria-hidden="true">↗</span>
       </a>
 
-      <div class="ent-divider" role="separator"></div>
+      <div class="glass-divider" role="separator"></div>
 
       <!-- Football -->
       <a
@@ -60,7 +60,7 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
         <span class="ent-arrow" aria-hidden="true">↗</span>
       </a>
 
-      <div class="ent-divider" role="separator"></div>
+      <div class="glass-divider" role="separator"></div>
 
       <!-- Gaming -->
       <a
@@ -150,11 +150,6 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
         transition:
           opacity 0.18s ease,
           transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .ent-divider {
-        height: 1px;
-        background: rgba(255, 255, 255, 0.06);
-        margin: 0.1rem 0;
       }
     `,
   ],

@@ -14,7 +14,7 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
             <h3 class="category-label">{{ category.label }}</h3>
             <div class="chip-cloud">
               @for (name of category.skills; track name) {
-                <span class="skill-chip">{{ name }}</span>
+                <span class="glass-tag">{{ name }}</span>
               }
             </div>
           </div>
@@ -59,25 +59,9 @@ import { BentoCardComponent } from '../../shared/bento-card/bento-card';
         flex-wrap: wrap;
         gap: 0.4rem;
       }
-      .skill-chip {
-        display: inline-flex;
-        align-items: center;
+      .glass-tag {
         padding: 0.3rem 0.75rem;
-        border-radius: 99px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.03);
         font-size: 0.76rem;
-        font-weight: 500;
-        color: rgba(255, 255, 255, 0.65);
-        transition: all 0.16s ease;
-        cursor: default;
-        white-space: nowrap;
-      }
-      .skill-chip:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.22);
-        color: #fff;
-        transform: translateY(-1px);
       }
     `,
   ],
