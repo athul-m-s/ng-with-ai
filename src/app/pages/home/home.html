@@ -18,17 +18,30 @@
       <p class="hero-stack">Angular · Node.js · .NET · Azure</p>
     </div>
 
-    <!-- CTA -->
-    <button
-      id="cta-deep-dive"
-      class="cta-btn"
-      (click)="goToDeepDive()"
-      [class.cta-loading]="isLeaving()"
-      aria-label="Get to know me better"
-    >
-      <span class="cta-text">Get to know me better</span>
-      <span class="cta-arrow" aria-hidden="true">↓</span>
-    </button>
+    <!-- CTA Actions -->
+    <div class="hero-actions">
+      <button
+        id="cta-deep-dive"
+        class="cta-btn"
+        (click)="goToDeepDive()"
+        [class.cta-loading]="isLeaving()"
+        aria-label="Get to know me better"
+      >
+        <span class="cta-text">Get to know me better</span>
+        <span class="cta-arrow" aria-hidden="true">↓</span>
+      </button>
+
+      <!-- Resume Group -->
+      <div class="hero-resume-group">
+        <a href="https://drive.google.com/file/d/1VArkAspwN7egQwuRI3xRceWlu_-FqJXQ/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="resume-btn" aria-label="View Resume">
+          <span class="resume-icon">📄</span>
+          View Resume
+        </a>
+        <a href="https://drive.google.com/uc?export=download&id=1VArkAspwN7egQwuRI3xRceWlu_-FqJXQ" class="resume-dl" aria-label="Download Resume" title="Download Resume">
+          <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+    </div>
 
     <!-- Subtle scroll hint -->
     <p class="hero-hint" [class.fade-out]="isLeaving()">Press to explore</p>

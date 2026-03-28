@@ -80,7 +80,11 @@ interface SocialLink {
 })
 export class SocialLinksComponent {
   links: SocialLink[] = [
-    { label: 'GitLab', icon: '🦊', handle: 'athulms', href: 'https://gitlab.com/athulms' },
+    { label: 'LinkedIn', icon: '🔗', handle: 'athul-ms', href: 'https://www.linkedin.com/in/athul-ms/' },
+    { label: 'GitHub', icon: '🐙', handle: 'athul-m-s', href: 'https://github.com/athul-m-s' },
+    { label: 'GitLab', icon: '🦊', handle: 'athul-m-s', href: 'https://gitlab.com/athul-m-s' },
+    { label: 'Instagram', icon: '📸', handle: 'iamathulms', href: 'https://www.instagram.com/iamathulms' },
+    { label: 'Facebook', icon: '👥', handle: 'iamathulms', href: 'https://www.facebook.com/iamathulms/' },
     { label: 'Email', icon: '✉', handle: '4thulms@gmail.com', href: 'mailto:4thulms@gmail.com' },
     { label: 'Phone', icon: '📞', handle: '+91 77362 23178', href: 'tel:+917736223178' },
     { label: 'Location', icon: '📍', handle: 'Palakkad, Kerala', href: 'https://maps.google.com/?q=Palakkad,Kerala,India' },

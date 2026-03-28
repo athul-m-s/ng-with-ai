@@ -8,7 +8,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <div class="bento-tag">Lifestyle</div>
 
       <!-- Films / Letterboxd -->
-      <a href="https://letterboxd.com" target="_blank" rel="noopener noreferrer" class="ent-block" aria-label="Letterboxd film diary">
+      <a href="https://letterboxd.com/AthulMS/" target="_blank" rel="noopener noreferrer" class="ent-block" aria-label="Letterboxd film diary">
         <div class="ent-icon" aria-hidden="true">🎬</div>
         <div class="ent-info">
           <span class="ent-label">Films</span>
@@ -20,7 +20,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       <div class="ent-divider" role="separator"></div>
 
       <!-- Music / Spotify -->
-      <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="ent-block" aria-label="Music on Spotify">
+      <a href="https://open.spotify.com/user/21h2yl7d5qotmt4zmgn73tnrq" target="_blank" rel="noopener noreferrer" class="ent-block" aria-label="Music on Spotify">
         <div class="ent-icon" aria-hidden="true">♪</div>
         <div class="ent-info">
           <span class="ent-label">Music</span>
