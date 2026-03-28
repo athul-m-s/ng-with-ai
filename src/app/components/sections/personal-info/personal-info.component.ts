@@ -18,7 +18,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     </section>
   `,
   styles: [`
-    :host { display: contents; }
+    :host { display: block; }
+    .bento-card { width: 100%; height: 100%; }
     .personal-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;

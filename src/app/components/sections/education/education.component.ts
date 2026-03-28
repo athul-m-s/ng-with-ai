@@ -36,17 +36,15 @@ interface Degree {
     </section>
   `,
   styles: [`
-    :host { display: contents; }
-    .bento-card { grid-column: span 2; }
-    @media (max-width: 768px) { .bento-card { grid-column: span 1; } }
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      color: #fff;
-      margin: 0 0 0.9rem;
+    :host { 
+      display: block; 
+      grid-column: span 2; 
     }
+    .bento-card { width: 100%; height: 100%; }
+    @media (max-width: 1024px) { :host { grid-column: span 1; } }
+    
     .edu-list { display: flex; flex-direction: column; gap: 0.6rem; }
+
     .edu-card {
       padding: 0.85rem;
       border-radius: 12px;

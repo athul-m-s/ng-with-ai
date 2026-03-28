@@ -16,6 +16,8 @@ import { ProfessionalInfoComponent } from '../../components/sections/professiona
 import { PersonalInfoComponent } from '../../components/sections/personal-info/personal-info.component';
 import { SocialLinksComponent } from '../../components/sections/social-links/social-links.component';
 import { EducationComponent } from '../../components/sections/education/education.component';
+import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive';
+
 
 @Component({
   selector: 'app-deep-dive',
@@ -31,7 +33,9 @@ import { EducationComponent } from '../../components/sections/education/educatio
     PersonalInfoComponent,
     SocialLinksComponent,
     EducationComponent,
+    ScrollRevealDirective,
   ],
+
   templateUrl: './deep-dive.html',
   styleUrl: './deep-dive.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

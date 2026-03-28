@@ -31,15 +31,16 @@ interface SocialLink {
     </section>
   `,
   styles: [`
-    :host { display: contents; }
-
-    /* Full-width on desktop */
-    .bento-card--social { grid-column: 1 / -1; }
+    :host { 
+      display: block; 
+      grid-column: 1 / -1; 
+    }
+    .bento-card--social { width: 100%; height: 100%; }
 
     .social-grid {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 0.6rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
     }
     .social-item {
       display: flex;
@@ -51,7 +52,6 @@ interface SocialLink {
       border: 1px solid rgba(255,255,255,0.08);
       background: rgba(255,255,255,0.02);
       text-decoration: none;
-      flex: 1;
       min-width: 0;
       transition:
         background 0.18s ease,
@@ -68,10 +68,14 @@ interface SocialLink {
     .social-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.7); letter-spacing: 0.03em; }
     .social-handle { font-size: 0.68rem; color: rgba(255,255,255,0.28); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
 
-    @media (max-width: 768px) {
-      .bento-card--social { grid-column: span 1; }
-      .social-grid { flex-wrap: wrap; }
+    @media (max-width: 1024px) {
+      .social-grid { grid-template-columns: repeat(2, 1fr); }
     }
+    @media (max-width: 640px) {
+      :host { grid-column: span 1; }
+      .social-grid { grid-template-columns: 1fr; }
+    }
+
   `],
 })
 export class SocialLinksComponent {

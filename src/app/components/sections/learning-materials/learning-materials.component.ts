@@ -15,16 +15,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     </section>
   `,
   styles: [`
-    :host { display: contents; }
-    .section-title {
-      font-size: 1.1rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      color: #fff;
-      margin: 0 0 0.85rem;
-    }
+    :host { display: block; }
+    .bento-card { width: 100%; height: 100%; }
     .chip-cloud {
       display: flex;
+
       flex-wrap: wrap;
       gap: 0.4rem;
       align-content: flex-start;

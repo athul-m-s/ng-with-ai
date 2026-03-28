@@ -54,7 +54,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     </section>
   `,
   styles: [`
-    :host { display: contents; }
+    :host { display: block; }
+    .bento-card--entertainment { width: 100%; height: 100%; }
     .ent-block {
       display: flex;
       align-items: center;

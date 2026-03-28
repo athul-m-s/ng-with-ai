@@ -28,28 +28,21 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     </section>
   `,
   styles: [`
-    :host { display: contents; }
-    .bento-card--about { grid-column: span 2; }
-    @media (max-width: 768px) {
-      .bento-card--about { grid-column: span 1; }
+    :host { 
+      display: block; 
+      grid-column: span 2; 
     }
-    .section-title {
-      font-size: 1.6rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #fff;
-      margin: 0 0 0.85rem;
+    .bento-card--about { 
+      width: 100%; 
+      height: 100%; 
     }
-    .section-body {
-      font-size: 0.9rem;
-      line-height: 1.75;
-      color: rgba(255,255,255,0.5);
-      margin: 0 0 0.6rem;
+    @media (max-width: 1024px) {
+      :host { grid-column: span 2; }
     }
-    .highlight {
-      color: rgba(255,255,255,0.8);
-      font-weight: 600;
+    @media (max-width: 640px) {
+      :host { grid-column: span 1; }
     }
+    
     .cert-row {
       display: flex;
       flex-wrap: wrap;
@@ -68,6 +61,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     .cert-icon { font-size: 0.8rem; }
     .cert-label { font-size: 0.75rem; font-weight: 500; color: rgba(255,255,255,0.65); }
     .cert-date { font-size: 0.68rem; color: rgba(255,255,255,0.3); }
+
 
   `],
 })

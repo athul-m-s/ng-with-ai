@@ -68,34 +68,29 @@ interface Job {
     </section>
   `,
   styles: [`
-    :host { display: contents; }
-
-    .bento-card--full { grid-column: 1 / -1; }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #fff;
-      margin: 0 0 1.25rem;
+    :host { 
+      display: block; 
+      grid-column: 1 / -1; 
     }
+    .bento-card--full { width: 100%; height: 100%; }
 
     /* 3-column job grid on desktop */
     .jobs-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     @media (max-width: 1024px) {
-      .jobs-grid { grid-template-columns: repeat(2, 1fr); }
+      .jobs-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
     }
 
-    @media (max-width: 600px) {
-      .jobs-grid { grid-template-columns: 1fr; }
+    @media (max-width: 640px) {
+      .jobs-grid { grid-template-columns: 1fr; gap: 0.85rem; }
     }
 
     /* Job Block */
+
     .job-block {
       background: rgba(255,255,255,0.02);
       border: 1px solid rgba(255,255,255,0.07);
