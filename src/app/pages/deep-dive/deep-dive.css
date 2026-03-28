@@ -119,13 +119,6 @@
 
 @media (max-width: 1024px) {
   .bento-grid { 
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .bento-grid { 
     grid-template-columns: 1fr; 
     gap: 0.85rem;
     padding: 0 1.25rem;

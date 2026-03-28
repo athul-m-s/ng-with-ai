@@ -90,7 +90,7 @@
   display: none;
 }
 
-@media (min-width: 640px) {
+@media (min-width: 1024px) {
   .mono-nav__user-name { display: block; }
 }
 

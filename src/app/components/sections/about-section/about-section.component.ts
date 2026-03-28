@@ -37,9 +37,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
       height: 100%; 
     }
     @media (max-width: 1024px) {
-      :host { grid-column: span 2; }
-    }
-    @media (max-width: 640px) {
       :host { grid-column: span 1; }
     }
     

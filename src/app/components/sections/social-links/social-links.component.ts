@@ -69,11 +69,8 @@ interface SocialLink {
     .social-handle { font-size: 0.68rem; color: rgba(255,255,255,0.28); text-align: center; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
 
     @media (max-width: 1024px) {
-      .social-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 640px) {
       :host { grid-column: span 1; }
-      .social-grid { grid-template-columns: 1fr; }
+      .social-grid { grid-template-columns: 1fr; gap: 0.85rem; }
     }
 
   `],

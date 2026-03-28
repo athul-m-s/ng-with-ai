@@ -82,10 +82,6 @@ interface Job {
     }
 
     @media (max-width: 1024px) {
-      .jobs-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-    }
-
-    @media (max-width: 640px) {
       .jobs-grid { grid-template-columns: 1fr; gap: 0.85rem; }
     }
 

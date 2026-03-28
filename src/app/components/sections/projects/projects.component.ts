@@ -48,8 +48,9 @@ interface Project {
       grid-column: span 2; 
     }
     .bento-card { width: 100%; height: 100%; }
-    @media (max-width: 1024px) { :host { grid-column: span 2; } }
-    @media (max-width: 640px) { :host { grid-column: span 1; } }
+    @media (max-width: 1024px) {
+      :host { grid-column: span 1; }
+    }
     
     .project-list { display: flex; flex-direction: column; gap: 0.75rem; }
 
