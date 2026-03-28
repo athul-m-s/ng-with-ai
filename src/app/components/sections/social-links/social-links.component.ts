@@ -53,7 +53,28 @@ interface SocialLink {
     }
 
     @media (max-width: 768px) {
-      .social-grid { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+      .social-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 0.65rem; 
+        max-height: 220px;
+        overflow-y: auto;
+        padding: 1rem 0.4rem 1rem 0;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+        mask-image: linear-gradient(to bottom, 
+          transparent, 
+          black 15px, 
+          black calc(100% - 15px), 
+          transparent
+        );
+      }
+      .social-grid::-webkit-scrollbar {
+        width: 3px;
+      }
+      .social-grid::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
     }
 
     @media (max-width: 480px) {

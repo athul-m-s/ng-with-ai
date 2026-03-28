@@ -43,74 +43,117 @@ interface Project {
       </div>
     </app-bento-card>
   `,
-  styles: [`
-    :host { 
-      display: block; 
-      grid-column: span 2; 
-      height: 100%;
-      width: 100%;
-      box-sizing: border-box;
-    }
-    @media (max-width: 1024px) {
-      :host { grid-column: 1 / -1; }
-    }
-    
-    .project-list { 
-      display: flex; 
-      flex-direction: column; 
-      gap: 0.75rem; 
-      width: 100%;
-    }
+  styles: [
+    `
+      :host {
+        display: block;
+        grid-column: span 2;
+        height: 100%;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      @media (max-width: 1024px) {
+        :host {
+          grid-column: 1 / -1;
+        }
+      }
 
-    .glass-item {
-      cursor: default;
-      padding: 1.1rem;
-    }
+      .project-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        width: 100%;
+        max-height: 600px;
+        overflow-y: auto;
+        padding: 1.25rem 0.5rem 1.25rem 0;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+        mask-image: linear-gradient(
+          to bottom,
+          transparent,
+          black 20px,
+          black calc(100% - 20px),
+          transparent
+        );
+      }
 
-    .project-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 0.5rem;
-      margin-bottom: 0.4rem;
-    }
-    .project-meta { display: flex; flex-direction: column; gap: 0.1rem; }
-    .project-name { font-size: 0.88rem; font-weight: 700; color: rgba(255,255,255,0.92); }
-    .project-client { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
-    .project-period { font-size: 0.7rem; color: rgba(255,255,255,0.28); white-space: nowrap; flex-shrink: 0; }
-    .project-desc {
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.38);
-      line-height: 1.55;
-      margin: 0 0 0.55rem;
-    }
-    .project-highlights {
-      list-style: none;
-      margin: 0 0 0.6rem;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
-    }
-    .project-highlight {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.5);
-      padding-left: 0.9rem;
-      position: relative;
-      line-height: 1.5;
-    }
-    .project-highlight::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: rgba(255,255,255,0.2);
-    }
-    .project-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-    }
-  `],
+      .project-list::-webkit-scrollbar {
+        width: 3px;
+      }
+      .project-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+      }
+      .project-list::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .glass-item {
+        cursor: default;
+        padding: 1.1rem;
+      }
+
+      .project-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-bottom: 0.4rem;
+      }
+      .project-meta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.1rem;
+      }
+      .project-name {
+        font-size: 0.88rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .project-client {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.35);
+      }
+      .project-period {
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.28);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .project-desc {
+        font-size: 0.78rem;
+        color: rgba(255, 255, 255, 0.38);
+        line-height: 1.55;
+        margin: 0 0 0.55rem;
+      }
+      .project-highlights {
+        list-style: none;
+        margin: 0 0 0.6rem;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .project-highlight {
+        font-size: 0.75rem;
+        color: rgba(255, 255, 255, 0.5);
+        padding-left: 0.9rem;
+        position: relative;
+        line-height: 1.5;
+      }
+      .project-highlight::before {
+        content: '—';
+        position: absolute;
+        left: 0;
+        color: rgba(255, 255, 255, 0.2);
+      }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.3rem;
+      }
+    `,
+  ],
 })
 export class ProjectsComponent {
   projects: Project[] = [
