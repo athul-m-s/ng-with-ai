@@ -22,27 +22,56 @@
     </div>
   </header>
 
+  <!-- Tabs Navigation -->
+  <nav class="dive-tabs-container">
+    <div class="dive-tabs">
+      <button class="tab-item" [class.active]="currentTab() === 'about'" (click)="setTab('about', $event)">
+        About
+        <span class="tab-indicator"></span>
+      </button>
+      <button class="tab-item" [class.active]="currentTab() === 'project'" (click)="setTab('project', $event)">
+        Projects
+        <span class="tab-indicator"></span>
+      </button>
+      <button class="tab-item" [class.active]="currentTab() === 'lifestyle'" (click)="setTab('lifestyle', $event)">
+        Lifestyle
+        <span class="tab-indicator"></span>
+      </button>
+      <button class="tab-item" [class.active]="currentTab() === 'certificate'" (click)="setTab('certificate', $event)">
+        Certification
+        <span class="tab-indicator"></span>
+      </button>
+      <button class="tab-item" [class.active]="currentTab() === 'connect'" (click)="setTab('connect', $event)">
+        Connect
+        <span class="tab-indicator"></span>
+      </button>
+    </div>
+  </nav>
+
   <!-- Bento Grid -->
   <div class="bento-grid">
 
-    <!-- Row 1: About (2-col) + Skills (1-col) -->
-    <app-about-section appScrollReveal></app-about-section>
-    <app-learning-materials appScrollReveal></app-learning-materials>
-
-    <!-- Row 2: Employment History — full width (3-col) -->
-    <app-professional-info appScrollReveal></app-professional-info>
-
-    <!-- Row 3: Projects (2-col) + Lifestyle (1-col) -->
-    <app-projects appScrollReveal></app-projects>
-    <app-entertainment appScrollReveal></app-entertainment>
-
-    <!-- Row 4: Personal (1-col) + Education (1-col) + Cert (1-col) -->
-    <app-personal-info appScrollReveal></app-personal-info>
-    <app-education appScrollReveal></app-education>
-    <app-certification appScrollReveal></app-certification>
-
-    <!-- Row 5: Connect — full width, single horizontal row of links -->
-    <app-social-links appScrollReveal></app-social-links>
+    @switch (currentTab()) {
+      @case ('about') {
+        <app-about-section class="bento-full" appScrollReveal></app-about-section>
+        <app-learning-materials class="bento-full" appScrollReveal></app-learning-materials>
+        <app-professional-info class="bento-full" appScrollReveal></app-professional-info>
+        <app-education class="bento-half" appScrollReveal></app-education>
+        <app-personal-info class="bento-half" appScrollReveal></app-personal-info>
+      }
+      @case ('project') {
+        <app-projects class="bento-full" appScrollReveal></app-projects>
+      }
+      @case ('lifestyle') {
+        <app-entertainment class="bento-full" appScrollReveal></app-entertainment>
+      }
+      @case ('certificate') {
+        <app-certification class="bento-full" appScrollReveal></app-certification>
+      }
+      @case ('connect') {
+        <app-social-links class="bento-full" appScrollReveal></app-social-links>
+      }
+    }
 
   </div>
 

@@ -113,15 +113,99 @@
   margin: 0 auto;
   padding: 0 1.5rem;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr); /* 6-col for maximum flexibility */
   gap: 1.25rem;
+}
+
+.bento-full {
+  grid-column: span 6;
+}
+
+.bento-half {
+  grid-column: span 3;
+}
+
+/* ── Tabs Navigation ── */
+.dive-tabs-container {
+  width: 100%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 2.5rem;
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(24px);
+  position: sticky;
+  top: 64px; /* below navbar */
+  z-index: 10;
+  /* Mask for edge-fading when scrolling */
+  -webkit-mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+  mask-image: linear-gradient(to right, transparent, black 32px, black calc(100% - 32px), transparent);
+}
+
+.dive-tabs {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  gap: 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+}
+
+.dive-tabs::-webkit-scrollbar {
+  display: none; /* Safari/Chrome */
+}
+
+.tab-item {
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  cursor: pointer;
+  position: relative;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  flex-shrink: 0; /* Ensure tabs don't squash on small screens */
+}
+
+.tab-item:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.tab-item.active {
+  color: #fff;
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #fff;
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: center;
+}
+
+.tab-item.active .tab-indicator {
+  transform: scaleX(1);
 }
 
 @media (max-width: 1024px) {
   .bento-grid { 
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(4, 1fr); /* 4-col on tablet */
     gap: 1.15rem;
     padding: 0 1.35rem;
+  }
+  .bento-full {
+    grid-column: span 4;
+  }
+  .bento-half {
+    grid-column: span 2;
   }
 }
 
@@ -131,8 +215,14 @@
     gap: 1rem;
     padding: 0 1rem;
   }
+  .bento-full, .bento-half {
+    grid-column: span 1;
+  }
   .dive-header { 
     padding: 2.5rem 1rem 1.5rem;
+  }
+  .dive-tabs {
+    gap: 1.5rem; /* Tighter gap for easier mobile scrolling */
   }
 }
 

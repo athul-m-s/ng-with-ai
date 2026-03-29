@@ -44,9 +44,23 @@ import { ScrollRevealDirective } from '../../directives/scroll-reveal.directive'
 })
 export class DeepDiveComponent {
   auth = inject(AuthService);
-
+  
+  protected readonly currentTab = signal<'about' | 'project' | 'lifestyle' | 'certificate' | 'connect'>('about');
   protected readonly showLoginModal = signal(false);
   protected readonly showSignupModal = signal(false);
+
+  setTab(tab: 'about' | 'project' | 'lifestyle' | 'certificate' | 'connect', event?: MouseEvent) {
+    this.currentTab.set(tab);
+    
+    // Smooth scroll the clicked tab to the center of the list
+    if (event?.currentTarget) {
+      (event.currentTarget as HTMLElement).scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      });
+    }
+  }
 
   openLogin() {
     if (this.auth.loginError()) this.auth.loginError.set(null);
